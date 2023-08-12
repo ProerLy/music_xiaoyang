@@ -2,37 +2,14 @@ import { createRouter, createWebHashHistory } from 'vue-router'
 // 引入ElMessage 
 import { ElMessage  } from 'element-plus'
 // 引入get方法
-import { getData as _getdtl } from '@/func/index'
+import { getData as _getdtl } from '@/assets/js'
 
-import LoginPage from '@/LoginPage'
-import RegitPage from '@/RegitPage'
-import HomePage from '@/HomePage'
-import FindPage from '@/home/FindPage'
-import MyMusic from '@/home/MyMusic'
-import TuiJian from '@/home/find/TuiJian'
-import TopList from '@/home/find/TopList'
-import SongS from '@/home/find/SongS'
-import AllSongS from '@/home/find/AllSongS'
-import RecomMend from '@/home/find/RecomMend'
-import MinePage from '@/home/MinePage'
-import MineSet from '@/home/MineSet'
-import DefltSet from '@/home/mineSet/DefltSet'
-import CheckSongs from '@/home/CheckSongs'
-import IdSet from '@/home/mineSet/IdSet'
-import otherPage from '@/home/otherPage'
-import musicList from '@/home/musicList'
-import msgPage from '@/home/msgPage'
-import msgList from '@/home/msg/msgList'
-import msgInfo from '@/home/msg/msgInfo'
-import sysMsg from '@/home/msg/sysMsg'
-import followsPage from '@/home/followsPage'
-import fensPage from '@/home/fensPage'
 // import 
 const routes = [
     {
         path: "/login",
         name: "LoginPage",
-        component: LoginPage,
+        component: ()=>import('@/components/LoginPage.vue'),
         meta: {
             title: '登录',
             transition: 'scale-slide'
@@ -40,7 +17,7 @@ const routes = [
     }, {
         path: "/regit",
         name: "RegitPage",
-        component: RegitPage,
+        component:  ()=>import('@/components/RegitPage.vue'),
         meta: {
             title: '注册',
             transition: 'scale-slide'
@@ -49,7 +26,7 @@ const routes = [
     {
         path: "/home",
         name: "HomePage",
-        component: HomePage,
+        component:  ()=>import('@/components/HomePage.vue'),
         redirect: '/find',
         meta: {
             title: '七语熙音乐馆'
@@ -58,110 +35,110 @@ const routes = [
             {
                 path: "/find",
                 name: "FindPage",
-                component: FindPage,
+                component:  ()=>import('@/components/home/FindPage.vue'),
                 redirect: '/find/tuijian',
                 children: [
                     {
                         path: "tuijian",
                         name: "TuiJian",
-                        component: TuiJian
+                        component:  ()=>import('@/components/home/find/TuiJian.vue')
                     },
                     {
                         path: "toplist/:id",
                         name: "TopList",
-                        component: TopList
+                        component: ()=>import('@/components/home/find/TopList.vue')
                     },
                     {
                         path: "songs/:id",
                         name: "SongS",
-                        component: SongS
+                        component: ()=>import('@/components/home/find/SongS.vue')
                     },
                     {
                         path: "allsongs/:type/:limit",
                         name: "AllSongS",
-                        component: AllSongS
+                        component: ()=>import('@/components/home/find/AllSongS.vue')
                     },
                     {
                         path: "recommend",
                         name: "RecomMend",
-                        component: RecomMend
+                        component: ()=>import('@/components/home/find/RecomMend.vue')
                     }
                 ]
             },
             {
                 path: "/mymusic/:id",
                 name: "MyMusic",
-                component: MyMusic
+                component: ()=>import('@/components/home/MyMusic.vue')
             },
             {
                 path: "/mine",
                 name: "MinePage",
-                component: MinePage
+                component: ()=>import('@/components/home/MinePage.vue')
             },
             {
                 path: "/other/:id",
                 name: "otherPage",
-                component: otherPage
+                component: ()=>import('@/components/home/otherPage.vue')
             },
             {
                 path: "/mineset",
                 name: "MineSet",
-                component: MineSet,
+                component: ()=>import('@/components/home/MinePage.vue'),
                 redirect: '/mineset/defltset',
                 children: [
                     {
                         path: "defltset",
                         name: "DefltSet",
-                        component: DefltSet,
+                        component: ()=>import('@/components/home/mineSet/DefltSet.vue')
                     },
                     {
                         path: "idset",
                         name: "IdSet",
-                        component: IdSet,
+                        component: ()=>import('@/components/home/mineSet/IdSet.vue'),
                     }
                 ]
             },
             {
                 path: "/check/:key",
                 name: "CheckSongs",
-                component: CheckSongs
+                component: ()=>import('@/components/home/CheckSongs.vue')
             },
             {
                 path: "/musiclist/:id",
                 name: "musicList",
-                component: musicList
+                component: ()=>import('@/components/home/musicList.vue')
             },
             {
                 path: "/msg",
                 name: "msgPage",
-                component: msgPage,
+                component: ()=>import('@/components/home/msgPage.vue'),
                 redirect: '/msglist',
                 children: [
                     {
                         path: "/msglist",
                         name: "msgList",
-                        component: msgList
+                        component: ()=>import('@/components/home/msg/msgList.vue')
                     }, {
                         path: "/msginfo/:user_id/:friend_id",
                         name: "msgInfo",
-                        component: msgInfo
+                        component: ()=>import('@/components/home/msg/msgInfo.vue')
                     },
                     {
                         path: "/sysmsg",
                         name: "sysMsg",
-                        component: sysMsg
+                        component: ()=>import('@/components/home/msg/sysMsg.vue')
                     }
                 ]
             },
             {
                 path: "/follows/:id",
                 name: "followsPage",
-                component: followsPage
+                component: ()=>import('@/components/home/followsPage.vue')
             },
             {
                 path: "/fens/:id",
                 name: "fensPage",
-                component: fensPage
+                component: ()=>import('@/components/home/fensPage.vue')
             }
         ]
     },
@@ -173,7 +150,7 @@ const routes = [
     {
         path: "/:pathMatch(.*)",
         name: "errorPage",
-        component: () => import('./../errorPage')
+        component: () => import('@/components/errorPage.vue')
     }
 ]
 

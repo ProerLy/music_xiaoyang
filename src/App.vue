@@ -14,7 +14,7 @@ export default {
 }
 </script>
 <script setup>
-import { getData, setData } from './func/index';
+import { getData, setData } from './assets/js';
 import { onMounted, getCurrentInstance } from 'vue'
 import Qs from 'qs'
 const { proxy } = getCurrentInstance();
