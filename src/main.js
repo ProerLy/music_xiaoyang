@@ -10,8 +10,7 @@ import 'element-plus/dist/index.css'
 import * as ElementPlusIconsVue from '@element-plus/icons-vue'
 
 // 引入axios 
-import axios from 'axios'
-axios.defaults.baseURL = 'http://localhost:81/music_qyx/api'
+import axios from '@/axios/axios'
 
 // 引入jq
 import jQuery from 'jquery'
